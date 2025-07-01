@@ -42,3 +42,5 @@
 
 # Mine :)
 vcpkg
+build
+.cache
