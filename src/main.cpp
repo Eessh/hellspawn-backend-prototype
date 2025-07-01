@@ -1,3 +1,4 @@
+#include <drogon/HttpResponse.h>
 #include <drogon/HttpTypes.h>
 #include <drogon/drogon.h>
 #include <trantor/utils/Logger.h>
@@ -89,8 +90,9 @@ int main()
                               LOG_INFO << "connected: " << (request->connected() ? "true" : "false");
 
                               auto resp = HttpResponse::newHttpResponse();
-                              resp->setBody("Hellspawn backend running ...");
+                              resp->setStatusCode(HttpStatusCode::k200OK);
                               resp->setContentTypeCode(ContentType::CT_TEXT_PLAIN);
+                              resp->setBody("Hellspawn backend running ...");
 
                               callback(resp);
                           },
@@ -103,6 +105,7 @@ int main()
                               LOG_INFO << "connected: " << (request->connected() ? "true" : "false");
 
                               auto resp = HttpResponse::newHttpResponse();
+                              resp->setStatusCode(HttpStatusCode::k200OK);
                               resp->setContentTypeCode(ContentType::CT_APPLICATION_JSON);
                               resp->setBody("{\"text\":\"" + text + "\"}");
 
