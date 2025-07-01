@@ -1,5 +1,3 @@
-#include <drogon/HttpResponse.h>
-#include <drogon/HttpTypes.h>
 #include <drogon/drogon.h>
 #include <trantor/utils/Logger.h>
 #include <functional>
