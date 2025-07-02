@@ -10,9 +10,13 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 project(hellspawn-backend)
 
 find_package(Drogon CONFIG REQUIRED)
-find_package(DuckDB CONFIG REQUIRED)
+find_package(jwt-cpp CONFIG REQUIRED)
 
-add_executable(${PROJECT_NAME} src/main.cpp)
+add_executable(${PROJECT_NAME}
+    src/main.cpp
+    src/controllers/AuthController.cpp
+    src/database_entities/user.hpp
+)
 
 target_link_libraries(${PROJECT_NAME} PRIVATE Drogon::Drogon)
-target_link_libraries(${PROJECT_NAME} PRIVATE $<IF:$<TARGET_EXISTS:duckdb>,duckdb,duckdb_static>)
+target_link_libraries(${PROJECT_NAME} PRIVATE jwt-cpp::jwt-cpp)
